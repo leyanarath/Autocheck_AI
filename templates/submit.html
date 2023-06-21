@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Table Contents</title>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Question Number</th>
+      <th>Mark</th>
+      <th>Total Mark</th>
+    </tr>
+    {% set TGmark = namespace(value=0) %}
+    {% set Tmark = namespace(value=0) %}
+    {% for row in table_data %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      {% set TGmark.value = TGmark.value + row[1] %}
+      <td>{{ row[2] }}</td>
+      {% set Tmark.value = Tmark.value + row[2] %}
+    </tr>
+    {% endfor %}
+    <tr>
+      <th>Grand Total</th>
+      <th>{{ TGmark.value|int }}</th>
+      <th>{{ Tmark.value }}</th>
+    </tr>
+  </table>
+</body>
+</html
